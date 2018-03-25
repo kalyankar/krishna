@@ -22,7 +22,7 @@ end
 execute 'mkfs' do
   command "mkfs -t #{node['mount_splunk']['filesystem']} #{node['mount_splunk']['device_id']}"
   # only if it's not mounted already
-  not_if "grep -qs #{node['mount_splunk']['mount_point']} /proc/mounts"
+  not_if "grep #{node['mount_splunk']['mount_point']} /proc/mounts"
 end
 
 # resize file system
