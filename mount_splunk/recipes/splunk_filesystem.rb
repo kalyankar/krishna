@@ -25,3 +25,16 @@ execute 'mkfs' do
   not_if "grep -qs #{node['mount_splunk']['mount_point']} /proc/mounts"
 end
 
+# resize file system
+#execute 'resize' do
+#  command "resize2fs #{node['mount_splunk']['device_id']} #{node['mount_splunk']['size']}"
+  # only if the device exists
+#  only_if "if [ -e #{node['mount_splunk']['device_id']} ]; then echo 'True' ; fi"
+#end
+
+mount "#{node['mount_splunk']['mount_point']}" do
+  fstype   node['mount_splunk']['filesystem']
+  device   node['mount_splunk']['device_id']
+  options  'mode=#{node['mount_splunk']['permission']},size=#{node['mount_splunk']['size']}'
+  action   [:mount, :enable]
+end
