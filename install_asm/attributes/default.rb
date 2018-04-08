@@ -4,3 +4,4 @@ default['install_asm']['disks']   = ['/dev/sde', '/dev/sdf', '/dev/sdg', '/dev/s
 default['install_asm']['user'] = 'ofeora'
 default['install_asm']['group'] = 'ofedba'
 default['install_asm']['asm_file'] = '/etc/init.d/oracleasm'
+default['install_asm']['yum_lib'] = 'http://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/index.html'
