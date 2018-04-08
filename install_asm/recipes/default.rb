@@ -1,5 +1,11 @@
 #This recipe installs Oracle ASM Packages 
 
+yum_repository 'Oracle_Public' do
+  description 'Oracle Public yum repository for ASM Libraries'
+  baseurl "#{node['install_asm']['yum_lib']}"
+  action :create
+end
+
 rpm_package node['install_asm']['asm_support'] do
   source :#{node['install_asm']['asm_support']}
   action :install
