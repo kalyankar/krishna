@@ -1,3 +1,5 @@
+#This recipe installs Oracle ASM Packages 
+
 rpm_package node['install_asm']['asm_support'] do
   source :#{node['install_asm']['asm_support']}
   action :install
