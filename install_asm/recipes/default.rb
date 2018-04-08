@@ -17,7 +17,7 @@ node['install_asm']['disks'].each do |disk|
     bash "create partition" do
       code "(echo n; echo p; echo 1; echo; echo; echo w) | fdisk #{disk}"
       action :run
-      not_if {partprobe -d -s #{disk}}
+      not_if {"partprobe -d -s #{disk}"}
     end
   end
 end
