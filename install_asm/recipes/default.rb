@@ -34,3 +34,13 @@ node['install_asm']['disks'].each do |disk|
     not_if "#{node['install_asm']['asm_file']} querydisk #{disk}1"
   end
 end
+
+bash "asm scan disk" do
+  code "#{node['install_asm']['asm_file']} scandisks"
+  action :run
+end
+
+bash "asm list disk" do
+  code "#{node['install_asm']['asm_file']} listdisks"
+  action :run
+end
