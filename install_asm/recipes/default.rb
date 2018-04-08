@@ -14,6 +14,7 @@ end
 
 bash "configure asm" do
   code "(echo #{node['install_asm']['user']}; echo #{node['install_asm']['group']}; echo "y"; echo "y") | /etc/init.d/oracleasm configure"
+  action :run
 end
 
 node['install_asm']['disks'].each do |disk|
@@ -23,5 +24,13 @@ node['install_asm']['disks'].each do |disk|
       action :run
       not_if {"partprobe -d -s #{disk}"}
     end
+  end
+end
+
+node['install_asm']['disks'].each do |disk|
+  bash "Mark ASM Disks" do
+    code "#{node['install_asm']['asm_file']} createdisk #{node['install_asm']['group']} #{disk}1"
+    action :run
+    not_if "#{node['install_asm']['asm_file']} querydisk #{disk}1"
   end
 end
