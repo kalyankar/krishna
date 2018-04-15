@@ -10,3 +10,6 @@ default['hpsa']['localpath'] = 'C:\build'
 #default['hpsa']['localpath'] = 'C:\\build'
 #default['hpsa']['localpath'] = "C:\build"
 #default['hpsa']['localpath'] = "C:\\build"
+
+default['hpsa']['hpsumzip'] = 'sppaug282016.zip'
+default['hpsa']['hpsum'] = 'sppaug282016'
