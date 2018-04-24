@@ -1,0 +1,30 @@
+﻿ <#
+    .SYNOPSIS
+    This initialize D-drive if null/no value is passed or initalize a drive based on drive letter. A offline disk must be available for this script to work.
+    
+    .PARAMETER driveLetter
+    a single drive letter that needs to be initialized. If no value is passed a default drive letter is assigned.
+
+    .EXAMPLE
+    init_d_drive 'D'
+    init_d_drive
+#>
+
+Param(
+  [Parameter(Mandatory=$False)]
+  [char]$driveLetter
+)
+
+
+Initialize-Disk 1
+Set-Disk -Number 1 -IsReadOnly 0
+
+if($driveLetter -eq $null)
+{
+ New-Partition -DiskNumber 1 -Size 35GB  -AssignDriveLetter | Format-Volume -FileSystem NTFS -Confirm:$false
+}
+elseif($driveLetter -ne $null)
+{
+ New-Partition -DiskNumber 1 -Size 35GB  -DriveLetter $driveLetter | Format-Volume -FileSystem NTFS -Confirm:$false
+}
+
