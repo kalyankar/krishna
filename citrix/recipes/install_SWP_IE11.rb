@@ -32,6 +32,12 @@ powershell_script 'install_auth' do
   notifies :reboot_now, 'reboot[reboot_server]', :immediately
 end
 
+batch 'run_scr_admin_users' do
+  code <<-EOH
+    SCR_XA7x_IEHardeningOFF_admin_users.bat 
+EOH
+end
+
   reboot 'reboot_server' do
     action :nothing
     reason 'System needs a restart after installation IE11 software'
