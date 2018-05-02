@@ -24,3 +24,6 @@ default['citrix']['tcamzip'] = "TCAM-12.2.3.1-x64.zip"
 default['citrix']['snowzip'] = "PKG_CTX_SnowInventoryClient_3.7.4.zip"
 default['citrix']['citrixzip'] = "Citrix Receiver 14.9.1000.17 Package.zip"
 default['citrix']['swpzip'] = "SWP_IE11_Hardening_and_Active-Setup.zip"
+default['citrix']['admin_to_local_zip'] = "SCR_Citrix_Add_adm_To_Local_Admins_Group.zip"
+default['cirtix']['vda_server_setup_zip'] = "VDAServerSetup_7_15_2000.zip"
+default['citrix']['env'] = 'DEV' #PROD, STAGE, TEST
