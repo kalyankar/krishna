@@ -77,7 +77,24 @@ Name | Description | Default| Type
 `install`| set the modprobe command _install_| nil| _String/NilClass_
 `remove`| set the modprobe command _remove_| nil| _String/NilClass_
 `blacklist`| set the modprobe command _blacklist_| nil| _Boolean/NilClass_
+`check_availability`| before loading or configuring, ensure the module is available on disk for the running kernel| false| _Boolean_
 
+For instance:
+``` ruby
+# To load and configure "mlx4_en"
+kernel_module 'mlx4_en' do
+  onboot true  # Make the loading persistent
+  reload false # We don't want to reload our network module
+  options %w(inline_thold=120 udp_rss=1) # Specific loading options
+  check_availability true # Only load and configure when module is present
+end
+
+# To blacklist a module
+kernel_module 'pcspkr' do
+  onboot true
+  blacklist true
+end
+```
 Contributing
 ------------
 1. Fork the [repository on Github][repository]
@@ -108,6 +125,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 [^1]*Note*: it has no effect unless CONFIG_MODULE_FORCE_UNLOAD was set when the kernel was compiled
+
 [author]:                   https://github.com/jmauro
 [repository]:               https://github.com/criteo-cookbooks/kernel-modules
 [build_status]:             https://api.travis-ci.org/criteo-cookbooks/kernel-modules.svg?branch=master
