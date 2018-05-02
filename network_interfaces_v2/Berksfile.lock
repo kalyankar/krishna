@@ -1,0 +1,27 @@
+DEPENDENCIES
+  fake
+    path: test/fixtures/cookbooks/fake
+  net_setup
+    path: test/fixtures/cookbooks/net_setup
+  network_interfaces_v2
+    path: .
+    metadata: true
+
+GRAPH
+  chef_handler (2.1.1)
+  fake (0.1.0)
+    network_interfaces_v2 (>= 0.0.0)
+  kernel_module (1.0.1)
+  ms_dotnet (3.2.1)
+    windows (>= 1.36.1)
+  net_setup (0.1.0)
+  network_interfaces_v2 (2.10.0)
+    kernel_module (~> 1.0)
+    powershell (>= 0.0.0)
+  ohai (5.0.4)
+  powershell (6.0.0)
+    chef_handler (>= 0.0.0)
+    ms_dotnet (>= 2.6)
+    windows (>= 3.0)
+  windows (3.0.5)
+    ohai (>= 4.0.0)
