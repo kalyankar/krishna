@@ -1,0 +1,6 @@
+name             'dns_ptc'
+maintainer       'Krishna Pippala'
+maintainer_email 'Krishna.Pippala@optum.com'
+license          'Optum Inc'
+description      'Configures DNS Settings for Windows/Linux Servers in PTC'
+depends 'network_interfaces_v2'
